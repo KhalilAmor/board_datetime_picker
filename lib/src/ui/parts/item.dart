@@ -244,52 +244,40 @@ class ItemWidgetState extends State<ItemWidget>
                   alignment: Alignment.center,
                   child: Material(
                     color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          isTextEditing = true;
-                        });
-                        Future.delayed(const Duration(milliseconds: 10))
-                            .then((_) {
-                          widget.option.focusNode.requestFocus();
-                        });
-                      },
-                      borderRadius: borderRadius,
-                      child: SizedBox(
-                        height: itemSize,
-                        width: double.infinity,
-                      ),
+                    child: SizedBox(
+                      height: itemSize,
+                      width: double.infinity,
                     ),
                   ),
                 ),
-                Visibility(
-                  visible: isTextEditing,
-                  child: _centerAlign(
-                    TextField(
-                      key: ValueKey(widget.option.type.name),
-                      controller: textController,
-                      focusNode: widget.option.focusNode,
-                      keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.done,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(bottom: 4, left: 2),
-                      ),
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: widget.textColor,
-                          ),
-                      textAlign: TextAlign.center,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(
-                            widget.option.maxLength),
-                        // AllowTextInputFormatter(map.values.toList()),
-                      ],
-                      onChanged: onChangeText,
-                    ),
-                  ),
-                ),
+                // Visibility(
+                //   visible: isTextEditing,
+                //   child: _centerAlign(
+                //     TextField(
+                //       key: ValueKey(widget.option.type.name),
+                //       controller: textController,
+                //       focusNode: widget.option.focusNode,
+                //       keyboardType: TextInputType.number,
+                //       textInputAction: TextInputAction.done,
+                //       decoration: const InputDecoration(
+                //         border: InputBorder.none,
+                //         contentPadding: EdgeInsets.only(bottom: 4, left: 2),
+                //       ),
+                //       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                //             fontWeight: FontWeight.bold,
+                //             fontSize: 17,
+                //             color: widget.textColor,
+                //           ),
+                //       textAlign: TextAlign.center,
+                //       inputFormatters: [
+                //         LengthLimitingTextInputFormatter(
+                //             widget.option.maxLength),
+                //         // AllowTextInputFormatter(map.values.toList()),
+                //       ],
+                //       onChanged: onChangeText,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
